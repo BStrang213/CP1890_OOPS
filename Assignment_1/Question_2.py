@@ -1,39 +1,35 @@
-import random
-from dataclasses import dataclass
+from random import shuffle, choice
+
 
 class Card:
-    def __init__(self, suit:list, value:list):
+    suit: list
+    value: list
+
+    def __init__(self):
         self.suit = ['Spades', 'Clubs', 'Diamonds', 'Hearts']
         self.value = ['Ace', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'Jack', 'Queen', 'King']
 
-    # suit:list = ['Spades', 'Clubs', 'Diamonds', 'Hearts']
-    # value:list =['Ace', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'Jack', 'Queen', 'King']
-
-    #suit = ['Spades', 'Clubs', 'Diamonds', 'Hearts']
-    #value =
-
+    @property
     def get_card(self):
-        card = [f"{self.value} of {self.suit}"]
+        card = zip([f"{self.value} of {self.suit}"])
         return card
 
-    @property
     def cards(self):
-        return self.card
+        return self.get_card
 
 
 class Deck:
-    def __init__(self, Card):
-        deck_cards = []
-        deck_cards.append(Card)
+    deck_cards: list
 
-    def count_cards(self, deck_cards):
-        deck_num = deck_cards.count
-        return int(deck_num)
+    def __init__(self):
+        self.deck_cards = []
 
-    def shuffle_deck(self, deck_cards):
-        ran_deck = random.shuffle(deck_cards)
-        return ran_deck
+    def count_cards(self):
+        deck_num = self.deck_cards.count(Card)
+        return deck_num
 
-    def deal_card(self, ran_deck):
-        card = random.choice(ran_deck)
-        return card
+    def shuffle_deck(self):
+        return shuffle(self.deck_cards)
+
+    def deal_card(self, shuffle_deck):
+        return choice(shuffle_deck)
