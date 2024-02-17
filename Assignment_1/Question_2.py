@@ -18,14 +18,14 @@ class Card:
         return self.get_card
 
 
-class Deck:
+class Deck():
     deck_cards: list
 
     def __init__(self):
-        self.deck_cards = []
+        self.deck_cards = [Card.get_card]
 
     def count_cards(self):
-        deck_num = self.deck_cards.count(Card)
+        deck_num = self.deck_cards.count(Card.get_card)
         return deck_num
 
     def shuffle_deck(self):

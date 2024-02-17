@@ -15,7 +15,7 @@ def main():
         print("\nHere are your cards:")
         print(hand)
 
-        left = Deck.deck_num - num
+        left = 52 - num
         print(f"\nThere are {left} cards left in the deck.\n")
         print("Good Luck!")
 
