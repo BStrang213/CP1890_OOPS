@@ -18,7 +18,7 @@ class Card:
         return self.get_card
 
 
-class Deck():
+class Deck:
     deck_cards: list
 
     def __init__(self):
@@ -32,4 +32,5 @@ class Deck():
         return shuffle(self.deck_cards)
 
     def deal_card(self, shuffle_deck):
-        return choice(shuffle_deck)
+        ret_card = choice(shuffle_deck)
+        return ret_card

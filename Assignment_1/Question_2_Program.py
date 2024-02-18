@@ -1,4 +1,4 @@
-from Question_2 import Deck
+from Question_2_Classes import Deck
 
 
 def main():
