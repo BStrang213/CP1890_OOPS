@@ -1,12 +1,10 @@
-from class1 import Customer
+from question3_class import Customer
 import csv
 
 file_path = "customers.csv"
 
 def title():
     print("Customer Viewer")
-
-
 
 def read_customers_from_csv(csv_file):
     customers = []
@@ -26,7 +24,6 @@ def read_customers_from_csv(csv_file):
             customers.append(customer)
     return customers
 
-
 def display_customer_by_id(customers, customer_id):
     for customer in customers:
         if customer.cust_id == customer_id:
@@ -35,7 +32,6 @@ def display_customer_by_id(customers, customer_id):
             print(customer.full_address)
             return
     print("No customer with that ID.")
-
 
 def main():
     title()
@@ -52,8 +48,6 @@ def main():
         else:
             break
     print("\nBye!")
-
-
 
 if __name__ == "__main__":
     main()
