@@ -1,4 +1,4 @@
-from random import shuffle, choice
+from random import shuffle
 
 
 class Card:
@@ -11,26 +11,23 @@ class Card:
 
     @property
     def get_card(self):
-        card = zip([f"{self.value} of {self.suit}"])
-        return card
-
-    def cards(self):
-        return self.get_card
+        cards = [(v, s) for v in self.value for s in self.suit]
+        return cards
 
 
 class Deck:
     deck_cards: list
 
     def __init__(self):
-        self.deck_cards = [Card.get_card]
+        card = Card()
+        self.deck_cards = card.get_card
+        self.shuffle_deck()
 
     def count_cards(self):
-        deck_num = self.deck_cards.count(Card.get_card)
-        return deck_num
+        return len(self.deck_cards)
 
     def shuffle_deck(self):
-        return shuffle(self.deck_cards)
+        shuffle(self.deck_cards)
 
-    def deal_card(self, shuffle_deck):
-        ret_card = choice(shuffle_deck)
-        return ret_card
+    def deal_card(self):
+        return self.deck_cards.pop()
