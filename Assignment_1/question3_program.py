@@ -1,11 +1,15 @@
 from question3_class import Customer
 import csv
 
+# csv file
 file_path = "customers.csv"
+
 
 def title():
     print("Customer Viewer")
 
+
+# To read the csv file
 def read_customers_from_csv(csv_file):
     customers = []
     with open(csv_file, 'r') as file:
@@ -24,6 +28,8 @@ def read_customers_from_csv(csv_file):
             customers.append(customer)
     return customers
 
+
+# To display the customer info with the selected id
 def display_customer_by_id(customers, customer_id):
     for customer in customers:
         if customer.cust_id == customer_id:
@@ -33,9 +39,11 @@ def display_customer_by_id(customers, customer_id):
             return
     print("No customer with that ID.")
 
+
 def main():
     title()
     customers = read_customers_from_csv("customers.csv")
+# for users to input customer id
     while True:
         try:
             customer_id = int(input("\nEnter customer ID: "))
@@ -48,6 +56,7 @@ def main():
         else:
             break
     print("\nBye!")
+
 
 if __name__ == "__main__":
     main()
