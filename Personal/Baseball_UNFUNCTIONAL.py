@@ -1,9 +1,11 @@
 from datetime import date
 
 
+POSITIONS = ['C', '1B', '2B', '3B', 'SS', 'LF', 'CF', 'RF', 'P']
+
+
 def positions():
-    position = ('C', '1B', '2B', '3B', 'SS', 'LF', 'CF', 'RF', 'P')
-    return print(','.join(position))
+    return print(','.join(POSITIONS))
 
 
 def title():
@@ -29,26 +31,32 @@ def days_till_game():
 
 
 def display_lineup(players):
-    if players == None:
-        print("No players")
+    if players is None:
+        return print("No players")
     else:
         for i, player in enumerate(players, start=1):
-            print(f"{i}, {players(0)}, {players(1)}, {players(2)}, {players(3)}, {players(4)}\n")
+            print(f"{i}. {player[0]}, {player[1]}, {player[2]}, {player[3]}, {player[4]}\n")
 
 
 def add_player(players):
     first_name = input("Enter player first name: ")
-    last_name = input("Enter player last name")
+    last_name = input("Enter player last name: ")
     pos = get_pos()
     atBats = get_atBats()
     hits = get_hits()
-    player = (first_name, last_name, pos, atBats, hits)
+    player = [first_name, last_name, pos, atBats, hits]
     players.append(player)
     print(f"{first_name} {last_name} was added")
 
 
 def get_pos():
-    print("blank")
+    player_pos = input("Position: ").capitalize()
+    while True:
+        if player_pos not in POSITIONS:
+            print("Invalid")
+            player_pos = input("Position: ").capitalize()
+        else:
+            return player_pos
 
 
 def get_atBats():
@@ -90,7 +98,7 @@ def main():
     while True:
         option = int(input("Menu Option: "))
         if option == 1:
-            display_lineup()
+            display_lineup(players)
         elif option == 2:
             add_player(players)
         elif option == 3:
