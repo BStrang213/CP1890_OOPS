@@ -1,4 +1,4 @@
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 
 
 @dataclass
@@ -6,4 +6,3 @@ class Baseball:
     player: str = ""
     atbats: int = 0
     hits: int = 0
-    # avg: atbats / hits
