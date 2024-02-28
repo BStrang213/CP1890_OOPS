@@ -31,8 +31,8 @@ def days_till_game():
 
 
 def display_lineup(players):
-    if players is None:
-        return print("No players")
+    if not players:
+        print("No players")
     else:
         for i, player in enumerate(players, start=1):
             print(f"{i}. {player[0]}, {player[1]}, {player[2]}, {player[3]}, {player[4]}\n")
@@ -43,7 +43,7 @@ def add_player(players):
     last_name = input("Enter player last name: ")
     pos = get_pos()
     atBats = get_atBats()
-    hits = get_hits()
+    hits = get_hits(atBats)
     player = [first_name, last_name, pos, atBats, hits]
     players.append(player)
     print(f"{first_name} {last_name} was added")
@@ -60,27 +60,69 @@ def get_pos():
 
 
 def get_atBats():
-    print("blank")
+    while True:
+        at_bats = int(input('at bats: '))
+        if at_bats < 0 or at_bats > 600:
+            print("Invalid Entry, must enter a value between 0 and 600")
+        else:
+            return at_bats
 
 
-def get_hits():
-    print("blank")
+def get_hits(at_bats):
+    while True:
+        hits = int(input("Hits "))
+        if (hits < 0) or (hits > at_bats):
+            print("Invalid entry. please enter value between 0 and at bats")
+        else:
+            return hits
 
 
-def rem_player():
-    print("blank")
+def rem_player(players):
+    number = int(input("Number; "))
+    if (number < 1) or (number > len(players)):
+        print("Invalid Selection \n")
+    else:
+        player_data = players.pop(number - 1)
+        print("{} was deleted. \n".format(player_data[0]))
 
 
-def move_player():
-    print("blank")
+def lineup_num(player_list, message):
+    while True:
+        number = int(input(message))
+        if number < 1 or number > len(player_list):
+            print('Invalid player number. Please select again. ')
+        else:
+            return number
 
 
-def edit_pos():
-    print("blank")
+def move_player(players):
+    player_rem = int(input("Number: ")) - 1
+    player = players.pop(player_rem)
+    # player_rem = lineup_num(players, 'current lineup number: ')
+    print("{} was selected".format(player[0]))
+    player_new = int(input("New lineup number: ")) - 1
+    players.insert(player_new, player)
+    print("{} was moved\n".format(player[0]))
 
 
-def edit_stats():
-    print("blank")
+def edit_pos(players):
+    number = lineup_num(players, 'Lineup Number')
+    player = players[number - 1]
+    print("you selected {} position{}".format(player[0], player[1]))
+    pos = get_pos()
+    player[1] = pos
+    print("{} position was updated.\n".format(player[0]))
+
+
+def edit_stats(players):
+    number = lineup_num(players, 'Lineup Number')
+    player = players[number - 1]
+    print("you selected {} position={} at bats={} H={}".format(player[0], player[1], player[2], player[3]))
+    at_bats = get_atBats()
+    hits = get_hits(at_bats)
+    player[2] = at_bats
+    player[3] = hits
+    print("{} was updated.\n".format(player[0]))
 
 
 def main():
@@ -102,17 +144,17 @@ def main():
         elif option == 2:
             add_player(players)
         elif option == 3:
-            rem_player()
+            rem_player(players)
         elif option == 4:
-            move_player()
+            move_player(players)
         elif option == 5:
-            edit_pos()
+            edit_pos(players)
         elif option == 6:
-            edit_stats()
+            edit_stats(players)
         elif option == 7:
             break
         else:
-            print("Invalid")
+            print("Invalid option. Try again.")
 
     print("Bye!")
 
