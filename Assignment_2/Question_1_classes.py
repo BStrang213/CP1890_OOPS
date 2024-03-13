@@ -17,7 +17,13 @@ class Person:
 class Customer(Person):
     num = int
 
+    def get_num(self):
+        return self.num
+
 
 @dataclass
 class Employee(Person):
     ssn = int
+
+    def get_ssn(self):
+        return self.ssn
