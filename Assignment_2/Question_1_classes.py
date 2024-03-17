@@ -7,23 +7,21 @@ class Person:
     l_name: str
     email: str
 
-    @property
     def fullName(self):
-        name = [(f, l) for f in self.f_name for l in self.l_name]
-        return name
+        return f"{self.f_name} {self.l_name}"
 
 
 @dataclass
 class Customer(Person):
-    num = int
+    num: str
 
-    def get_num(self):
+    def get_num(self) -> str:
         return self.num
 
 
 @dataclass
 class Employee(Person):
-    ssn = int
+    ssn: str
 
-    def get_ssn(self):
+    def get_ssn(self) -> str:
         return self.ssn

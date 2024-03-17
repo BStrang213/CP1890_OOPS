@@ -1,35 +1,40 @@
-from Question_1_classes import Customer, Employee, Person
+from Question_1_classes import Customer, Employee
 
 
 def title():
-    print("Customer/Employee Data Entry")
-
-
-def person():
-    first = input("First name: ")
-    last = input("Last name: ")
-    email = input("Email: ")
-    person1 = Person(f_name=first, l_name=last, email=email)
-    return person1
+    print("Customer/Employee Data Entry\n")
 
 
 def employee():
+    print("DATA ENTRY")
+    first = input("First name: ")
+    last = input("Last name: ")
+    email = input("Email: ")
     num = input("SSN: ")
-    return num
+    return Employee(f_name=first, l_name=last, email=email, ssn=num)
 
 
 def custom():
+    print("DATA ENTRY")
+    first = input("First name: ")
+    last = input("Last name: ")
+    email = input("Email: ")
     num = input("Number: ")
-    return num
+    return Customer(f_name=first, l_name=last, email=email, num=num)
 
 
-def show_person():
-    full = Person.fullName
-    print(f"{'Name:':} {full}")
-    if isinstance(Person, Employee):
-        print(f"{'SSN':} {Employee.ssn}")
-    elif isinstance(Person, Customer.num):
-        print(f"{'Number':} {Customer.num}")
+def show_person(human):
+    w = 10
+    if isinstance(human, Employee):
+        print(f"{'Name':{w}} {human.fullName()}")
+        print(f"{'Email':{w}} {human.email}")
+        print(f"{'SSN':{w}} {human.ssn}")
+        print()
+    elif isinstance(human, Customer):
+        print(f"{'Name':{w}} {human.fullName()}")
+        print(f"{'Email':{w}} {human.email}")
+        print(f"{'Number':{w}} {human.num}")
+        print()
     print()
 
 
@@ -39,17 +44,18 @@ def main():
     cont = "y"
     while cont == "y":
         user = input("Customer or Employee? (c/e): ")
+        print()
         if user == "c":
-            person()
-            custom()
+            human = custom()
+            print()
             print("CUSTOMER")
-            show_person()
+            show_person(human)
             cont = input("Continue?: ")
         elif user == "e":
-            person()
-            employee()
+            human = employee()
+            print()
             print("EMPLOYEE")
-            show_person()
+            show_person(human)
             cont = input("Continue?: ")
         else:
             print("invalid, try again")
