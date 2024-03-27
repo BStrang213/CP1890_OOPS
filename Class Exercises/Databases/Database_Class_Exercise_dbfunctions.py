@@ -25,6 +25,7 @@ def create_table(conn):
     conn.commit()
     print("Tables created")
 
+
 def create_category_entries(conn):
     cur = conn.cursor()
     query = "INSERT INTO categories VALUES (?, ?)"
@@ -39,11 +40,12 @@ def create_movie_entries(conn):
     cur = conn.cursor()
     query = "INSERT INTO movies VALUES (?, ?, ?, ?)"
     movie_collection = (('Spirited Away', 2005, 125, get_category_id(conn, 'Animation')),
-                        ('Alladin', 1992, 90, get_category_id(conn, 'Animation')))
+                        ('Aladdin', 1992, 90, get_category_id(conn, 'Animation')))
     for i in range(len(movie_collection)):
         cur.execute(query, movie_collection[i])
     conn.commit()
     print('Movie entries inserted')
+
 
 def get_categories(conn):
     cur = conn.cursor()
@@ -102,11 +104,10 @@ def add_movie(conn, movie_obj):
     conn.commit()
 
 
-
 if __name__ == "__main__":
     conn = connect()
     create_table(conn)
-    #create_category_entries(conn)
+    # create_category_entries(conn)
     # for category in get_categories(conn):
     #     print(category['id'], category['name'])
     # print(get_category_id(conn, 'Comedy'))
