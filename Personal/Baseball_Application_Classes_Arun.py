@@ -6,7 +6,7 @@ POSITIONS = ('C', '1B', '2B', '3B', 'SS', 'LF', 'CF', 'RF', 'P')
 def add_player(players):
     first_name = input('First name: ').title()
     last_name = input('Last name: ').title()
-    position = get_player_positon()
+    position = get_player_position()
     at_bats = get_at_bats()
     hits = get_hits(at_bats)
 
@@ -15,7 +15,7 @@ def add_player(players):
     print(f'Player {player.fullName} was added. \n')
 
 
-def get_player_positon():
+def get_player_position():
     while True:
         position = input('Position: ').upper()
         if position in POSITIONS:
@@ -61,7 +61,8 @@ def display_lineup(players):
         print('-' * 80)
         for i, player in enumerate(players, start=1):
             print(
-                f'{i:<3d}{player.fullName:40}{player.position:6}{player.atBats:6d}{player.hits:6d}{player.battingAvg:8.3f}')
+                f'{i:<3d}{player.fullName:40}{player.position:6}{player.atBats:6d}'
+                f'{player.hits:6d}{player.battingAvg:8.3f}')
         print()
 
 

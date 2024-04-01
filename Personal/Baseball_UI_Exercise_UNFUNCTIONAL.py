@@ -3,7 +3,7 @@ from tkinter import ttk
 
 window = tk.Tk()
 window.title("Player")
-window.geometry("400x400")
+window.geometry("400x250")
 
 frame = ttk.Frame(window, padding="10 10 10 10")
 frame.pack(fill="both", expand=True)
@@ -18,7 +18,7 @@ def Button_2():
 
 
 def Button_3():
-    print("place Holder")
+    window.destroy()
 
 
 player = ttk.Label(frame, text="Player ID:")

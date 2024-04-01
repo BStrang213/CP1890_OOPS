@@ -38,11 +38,11 @@ def get_Bats(conn):
     print("Place Holder")
 
 
-def Hits(conn):
+def hits(conn):
     print("Place Holder")
 
 
-def Average(conn):
+def average(conn):
     print("Place Holder")
 
 
