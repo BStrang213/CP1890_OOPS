@@ -10,10 +10,10 @@ def display_welcome():
 
 def display_menu():
     print("COMMAND MENU")
-    print("cat - View movies by category ")
+    print("cat  - View movies by category ")
     print("year - View movies by year")
-    print("add - Add a movie")
-    print("del - Delete a movie")
+    print("add  - Add a movie")
+    print("del  - Delete a movie")
     print("exit - Exit program")
     print()
 

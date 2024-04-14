@@ -8,6 +8,6 @@ print(query)
 c.execute(query)
 print("Table has been created")
 
-c.execute("""INSERT into students VALUES (1, 'Arun Rameshbabu1', 30, 100)""")
+c.execute("""INSERT into students VALUES (1, 'Arun Rameshbabu', 30, 100)""")
 conn.commit()
 conn.close()

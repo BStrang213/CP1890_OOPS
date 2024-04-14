@@ -107,13 +107,13 @@ def add_movie(conn, movie_obj):
 if __name__ == "__main__":
     conn = connect()
     create_table(conn)
-    # create_category_entries(conn)
-    # for category in get_categories(conn):
-    #     print(category['id'], category['name'])
-    # print(get_category_id(conn, 'Comedy'))
-    # print(get_category_name(conn, 6))
-    # print(make_category_object(conn, 1))
-    # create_movie_entries(conn)
+    create_category_entries(conn)
+    for category in get_categories(conn):
+        print(category['id'], category['name'])
+    print(get_category_id(conn, 'Comedy'))
+    print(get_category_name(conn, 6))
+    print(make_category_object(conn, 1))
+    create_movie_entries(conn)
     print(get_movies_by_category(conn, 1))
     print()
     some_movie = Movie(100, 'Robocop', 1994, 95, make_category_object(conn, 3))
