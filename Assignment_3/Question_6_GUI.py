@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
+import Question_6_database as Q6
 
 window = tk.Tk()
 window.title("Edit Sales Amount")
@@ -10,7 +11,10 @@ frame.pack(fill="both", expand=True)
 
 
 def button_1():
-    print("place holder")
+    date = date_entry.get()
+    region = region_entry.get()
+    Q6.get_data(conn, region, date)
+
 
 
 def button_2():
@@ -20,6 +24,8 @@ def button_2():
 def button_3():
     window.destroy()
 
+
+conn = Q6.connect()
 
 name_label = ttk.Label(frame, text="Enter date and region to get sales amount.")
 name_label.grid(column=0, columnspan=3, row=0)
